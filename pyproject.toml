@@ -4,5 +4,8 @@ version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.13"
 dependencies = [
-    "discord.py~=2.5"
+    "discord.py~=2.5",
+    "mcrcon~=0.7",
+    "python-dotenv~=1.1",
+    "loguru~=0.7"
 ]
