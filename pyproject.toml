@@ -7,5 +7,6 @@ dependencies = [
     "discord.py~=2.5",
     "mcrcon~=0.7",
     "python-dotenv~=1.1",
-    "loguru~=0.7"
+    "loguru~=0.7",
+    "pydantic-ai[all]~=0.3"
 ]

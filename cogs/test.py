@@ -11,11 +11,11 @@ class GeneralCommands(commands.Cog):
     async def on_ready(self):
         print(f'{self.qualified_name} Cog is ready.')
 
-    @app_commands.command(name="hello", description="ボットが挨拶します。")
+    @app_commands.command(name="hello")
     async def hello_command(self, interaction: discord.Interaction):
         await interaction.response().send_message(f'こんにちは！ {interaction.user.display_name}さん！')
 
-    @app_commands.command(name="ping", description="ボットのレイテンシを表示します。")
+    @app_commands.command(name="ping")
     async def ping_command(self, interaction: discord.Interaction):
         latency_ms = round(self.bot.latency * 1000)
         await interaction.response().send_message(f'Pong! {latency_ms}ms')
