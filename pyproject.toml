@@ -8,5 +8,8 @@ dependencies = [
     "mcrcon~=0.7",
     "python-dotenv~=1.1",
     "loguru~=0.7",
-    "pydantic-ai[all]~=0.3"
+    "pydantic-ai[a2a,evals,fastmcp,google,logfire,mcp,openai]~=1.0",
+    "scrapling[all]~=0.3",
+    "beautifulsoup4~=4.0",
+    "lxml~=6.0"
 ]

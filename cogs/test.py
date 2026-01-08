@@ -1,25 +1,19 @@
 import discord
-from discord.ext import commands
-from discord import app_commands
+from discord import app_commands, Client
+from discord.ext.commands import Cog, Bot
+from bot_util import send_message
 
 
-class GeneralCommands(commands.Cog):
-    def __init__(self, bot: commands.Bot):
-        self.bot = bot
-
-    @commands.Cog.listener()
-    async def on_ready(self):
-        print(f'{self.qualified_name} Cog is ready.')
-
-    @app_commands.command(name="hello")
-    async def hello_command(self, interaction: discord.Interaction):
-        await interaction.response().send_message(f'こんにちは！ {interaction.user.display_name}さん！')
+class TestCog(Cog):
+    def __init__(self, _bot: Bot):
+        self.client = _bot
 
     @app_commands.command(name="ping")
-    async def ping_command(self, interaction: discord.Interaction):
-        latency_ms = round(self.bot.latency * 1000)
-        await interaction.response().send_message(f'Pong! {latency_ms}ms')
+    async def send_ping(self, interaction: discord.Interaction[Client]):
+        latency = self.client.latency
+        await send_message(interaction, f"{latency}ms")
 
-
-async def setup(bot: commands.Bot):
-    await bot.add_cog(GeneralCommands(bot))
+    @app_commands.command(name="hello")
+    async def say_hello(self, interaction: discord.Interaction[Client]):
+        user_name = interaction.user.display_name
+        await send_message(interaction, f"こんにちは{user_name}さん！")
